@@ -56,7 +56,6 @@ cost_history = np.empty(shape=[1],dtype=float)
 X = tf.placeholder(tf.float32,[None,n_dim])
 Y = tf.placeholder(tf.float32,[None,1])
 W = tf.Variable(tf.ones([n_dim,1]))
-#initialize all variables we defined (graph)
 init = tf.global_variables_initializer()
 
 #Lineare regression with TF: line 1 multiply features by weights, line 2 calculate cost function j, line 3 update wights using gradient descent
@@ -67,8 +66,6 @@ training_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
 with tf.Session() as s:
     s.run(init)
-    #print s.run(normalized_features)
-    #print s.run(f)
     for epoch in range(training_epochs):
         s.run(training_step,feed_dict={X:train_x,Y:train_y})
         cost_history = np.append(cost_history,s.run(cost,feed_dict={X: train_x,Y: train_y}))

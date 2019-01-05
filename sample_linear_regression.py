@@ -61,7 +61,6 @@ hypothese_function = tf.add(tf.multiply(X, theta1), theta0)
 cost_function = tf.reduce_sum(tf.pow(hypothese_function - Y, 2))/(2 * m) #L2 loss
 optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost_function) #Gradient descent
 
-# Initialize variables
 init = tf.global_variables_initializer()
 
 # Launch a graph
